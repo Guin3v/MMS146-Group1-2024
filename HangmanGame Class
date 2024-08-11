@@ -1,10 +1,1 @@
-Attributes:
-secret_word - a random word to be guessed by the player
-guessed_letters - correct guesses of the player
-incorrect_guesses - incorrect guesses of the player
-max_attemps - number of incorrect guesses allowed
 
-Methods:
-check_guess - check if the guess of the player is correct or not
-update_hangman - update the hangman for each turn
-display_result - display the result of the game (win/lose)
