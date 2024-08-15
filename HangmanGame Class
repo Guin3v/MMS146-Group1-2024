@@ -1,1 +1,8 @@
-
+class HangmanGame:
+  def __init__(self, player_username, our_categories, secret_word, max_attempts=8):
+      self.player_username = player_username #Public Attribute
+      self._our_categories = our_categories #Protected Attribute
+      self._secret_word = secret_word #Protected Attribute
+      self._guessed_letters = [] #Protected Attribute
+      self._incorrect_guesses = [] #Protected Attribute
+      self._max_attempts = max_attempts #Protected Attribute
