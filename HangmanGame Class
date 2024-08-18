@@ -6,3 +6,21 @@ class HangmanGame:
       self._guessed_letters = [] #Protected Attribute
       self._incorrect_guesses = [] #Protected Attribute
       self._max_attempts = max_attempts #Protected Attribute
+  def enter_letter (self, letter):
+       "Enter a leter and check if it has been guessed already or is a valid guess."
+       self.letter = letter.lower()
+       if len(self.letter) != 1 or not self.letter.isalpha():
+          return "Invalid input. Please eneter a single alphabet character"
+       elif self.letter in self._guessed_letters or letter in self._incorrect_guesses:
+          return "You have already guessed that letter"
+       else:
+          self._guessed_letters.append(self.letter)
+          return self.check_guess (self.letter)
+       
+    def check_guess (self, letter):
+       "Check if the guesses letter is in the secret word and update incorrect guesses if not."
+       if self.letter in self._secret_word:
+          return f"Good guess! {self.letter} is in the word."
+       else:
+          self._incorrect_guesses.append(letter)
+          return f"Sorry, {self.letter} is not in the word. You have {self._max_attempts - len(self._incorrect_guesses)} attempts left."
