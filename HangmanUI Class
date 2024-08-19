@@ -1,1 +1,103 @@
-
+class HangmanUI:
+    
+    def __init__(self, hangman_game: object):
+        self.hangman = hangman_game
+    
+    def display_hangman(self):
+        guesses = len(self.hangman._incorrect_guesses)
+        if guesses == 0:
+                print(
+                    """
+                  |
+                  |
+                  |
+                  |
+                  |
+           --------
+                    """
+                )
+        elif guesses == 1:
+                print(
+                    """
+              -----
+                  |
+                  |
+                  |
+                  |
+                  |
+           --------
+                    """
+                )
+        elif guesses == 2:
+                print(
+                    """
+              -----
+              |   |
+                  |
+                  |
+                  |
+                  |
+           --------
+                    """
+                )
+        elif guesses == 3:
+                print(
+                    """
+              -----
+              |   |
+              O   |
+                  |
+                  |
+                  |
+           --------
+                    """
+                )
+        elif guesses == 4:
+                print(
+                    """
+              -----
+              |   |
+              O   |
+              |   |
+                  |
+                  |
+           --------
+                    """
+                )
+        elif guesses == 5:
+                print(
+                    """
+              -----
+              |   |
+              O   |
+             /|   |
+                  |
+                  |
+           --------
+                    """
+                )
+        elif guesses == 6:
+                print(
+                    """
+              -----
+              |   |
+              O   |
+             /|\  |
+                  |
+                  |
+           --------
+                    """
+                )
+        elif guesses == 7:
+                print(
+                    """
+              -----
+              |   |
+              O   |
+             /|\  |
+             /    |
+                  |
+           --------
+                    """
+                )
+        elif guesses == 8:
