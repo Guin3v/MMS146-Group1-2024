@@ -7,17 +7,17 @@ class HangmanGame:
       self._incorrect_guesses = [] #Protected Attribute
       self._max_attempts = max_attempts #Protected Attribute
 
- def update_hangman(self):
-        display_word = ''.join([letter if letter in self.guessed_letters else '_' for letter in self.secret_word])
-        return display_word
+  def update_hangman(self):
+      display_word = ''.join([letter if letter in self.guessed_letters else '_' for letter in self.secret_word])
+      return display_word
 
-    def display_result(self):
-        if self._incorrect_guesses >= self.max_attempts:
-            return f"We're sorry. You lose."
-        elif all(letter in self.guessed_letters for letter in self.secret_word):
-            return "Congratulations! You won!"
-        else:
-            return "Incorrect."
+  def display_result(self):
+      if self._incorrect_guesses >= self.max_attempts:
+          return f"We're sorry. You lose."
+      elif all(letter in self.guessed_letters for letter in self.secret_word):
+          return "Congratulations! You won!"
+      else:
+          return "Incorrect."
 
   def enter_letter (self, letter):
        "Enter a leter and check if it has been guessed already or is a valid guess."
@@ -30,7 +30,7 @@ class HangmanGame:
           self._guessed_letters.append(self.letter)
           return self.check_guess (self.letter)
        
-    def check_guess (self, letter):
+  def check_guess (self, letter):
        "Check if the guesses letter is in the secret word and update incorrect guesses if not."
        if self.letter in self._secret_word:
           return f"Good guess! {self.letter} is in the word."
