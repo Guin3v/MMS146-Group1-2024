@@ -1,6 +1,6 @@
 class HangmanGame:
-  def __init__(self, player_username, our_categories, secret_word, max_attempts=8):
-      self.player_username = player_username #Public Attribute
+  def __init__(self, player_username=None, our_categories=None, secret_word=None, max_attempts=8):
+      self.player_username = None #Public Attribute
       self._our_categories = our_categories #Protected Attribute
       self._secret_word = secret_word #Protected Attribute
       self._guessed_letters = [] #Protected Attribute
@@ -37,3 +37,35 @@ class HangmanGame:
        else:
           self._incorrect_guesses.append(letter)
           return f"Sorry, {self.letter} is not in the word. You have {self._max_attempts - len(self._incorrect_guesses)} attempts left."
+
+  def input_username(self):
+        '''Prompt the player to input their username after winning.'''
+        while True:
+            username = input("Please enter your username to save your score: ").strip()
+              
+            if not username:
+                raise ValueError("Username cannot be empty.")
+              
+            if username.isalnum():
+                self.player_username = username
+                print(f"Username '{self.player_username}' saved!")
+                return
+            else:
+                print("Invalid username. Please enter a valid username (letters and numbers only).")
+
+  def choose_category(self):
+          '''Prompt the player to type in a category.'''
+          categories = ['Music Genres', 'Cities', 'Animals', 'School Supplies', 'Food']
+    
+          print("Available categories:")
+          for category in categories:
+              print(f"- {category}")
+    
+          while True:
+              chosen_category = input("Please type in your chosen category: ").strip().capitalize()
+              if chosen_category in categories:
+                  self._our_categories = chosen_category
+                  print(f"You chose the {self._our_categories} category.")
+                  return
+              else:
+                  print("Invalid category. Please choose from the available categories.")
