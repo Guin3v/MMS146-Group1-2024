@@ -101,3 +101,99 @@ class HangmanUI:
                     """
                 )
         elif guesses == 8:
+
+class HangmanUI:
+    def __init__(self):
+        # Define the hangman stages (text-based representation)
+        self.hangman_stages = [
+            """
+               ------
+               |    |
+               |
+               |
+               |
+               |
+               |
+            --------
+            """,
+            """
+               ------
+               |    |
+               |    O
+               |
+               |
+               |
+               |
+            --------
+            """,
+            """
+               ------
+               |    |
+               |    O
+               |    |
+               |
+               |
+               |
+            --------
+            """,
+            """
+               ------
+               |    |
+               |    O
+               |   /|
+               |
+               |
+               |
+            --------
+            """,
+            """
+               ------
+               |    |
+               |    O
+               |   /|\\
+               |
+               |
+               |
+            --------
+            """,
+            """
+               ------
+               |    |
+               |    O
+               |   /|\\
+               |   /
+               |
+               |
+            --------
+            """,
+            """
+               ------
+               |    |
+               |    O
+               |   /|\\
+               |   / \\
+               |
+               |
+            --------
+            """
+        ]
+
+    def display_hangman(self, incorrect_guesses):
+        """Display the current stage of the hangman based on the number of incorrect guesses."""
+        print(self.hangman_stages[incorrect_guesses])
+
+    def display_word_status(self, secret_word, guessed_letters):
+        """Display the word with guessed letters revealed and the rest as underscores."""
+        display = ' '.join([letter if letter in guessed_letters else '_' for letter in secret_word])
+        print("\nWord:", display)
+
+    def display_end_game_message(self, won, secret_word):
+        """Display a message indicating whether the player won or lost, and reveal the correct word if lost."""
+        if won:
+            print("\nCongratulations, you've won!")
+        else:
+            print("\nGame over! The correct word was:", secret_word)
+
+    def display_invalid_input_message(self):
+        """Display a message indicating that the player's input was invalid."""
+        print("\nInvalid input. Please enter a single letter.")
