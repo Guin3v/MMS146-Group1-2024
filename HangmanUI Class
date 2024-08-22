@@ -101,3 +101,19 @@ class HangmanUI:
                     """
                 )
         elif guesses == 8:
+
+
+
+
+
+
+
+
+def display_end_game_message(self, won, secret_word=None, quit_game=False):
+    """Display a message indicating whether the player won, lost, or quit the game."""
+    if quit_game:
+        print("\nYou've chosen to quit the game. Better luck next time!")
+    elif won:
+        print("\nCongratulations, you've won!")
+    else:
+        print(f"\nGame over! The correct word was: {secret_word}")
