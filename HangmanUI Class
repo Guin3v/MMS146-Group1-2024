@@ -105,4 +105,4 @@ class HangmanUI:
 
         def display_word_status(self):
            word_status = self.hangman.update_hangman()
-           print(f"Word: {word_status}")
+           print(f"\nWord: {word_status}")
