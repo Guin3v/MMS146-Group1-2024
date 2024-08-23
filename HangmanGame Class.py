@@ -28,9 +28,13 @@ class HangmanGame:
       else:
           return f"Sorry, {letter} is not in the word. You have {self._max_attempts - len(self._incorrect_guesses)} attempts left."
        
-  def enter_letter (self, letter):
-      "Checks if a letter has been guessed already or is a valid guess, calls update_hangman() and check_guess()"
-      letter = letter.lower()
+  def enter_letter (self):
+      '''
+      Prompts the user to enter a letter, checks if a letter has been guessed already or is a valid guess, 
+      calls update_hangman() and check_guess()
+      '''
+      enter_letter = str(input("Enter a Letter: "))
+      letter = enter_letter.lower()
       if len(letter) != 1 or not letter.isalpha():
           return "Invalid input. Please enter a single alphabet character"
       elif letter in self._guessed_letters or letter in self._incorrect_guesses:
@@ -38,6 +42,7 @@ class HangmanGame:
       else:
           self.update_hangman(letter)
           return self.check_guess(letter)
+        
         
   def input_username(self):
       '''Prompt the player to input their username after winning.'''
