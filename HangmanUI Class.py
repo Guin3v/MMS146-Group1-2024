@@ -126,11 +126,27 @@ class HangmanUI:
         word_status = ''.join([letter if letter in self.hangman._guessed_letters else '_' for letter in self.hangman._secret_word])
         print(f"\nWord: {word_status}")
     
-    def display_end_game_message(self, won, secret_word=None, quit_game=False):
-    """Display a message indicating whether the player won, lost, or quit the game."""
-    if quit_game:
-        print("\nYou've chosen to quit the game. Better luck next time!")
-    elif won:
-        print("\nCongratulations, you've won!")
-    else:
-        print(f"\nGame over! The correct word was: {secret_word}")
+    def display_end_game_message(self):
+        """
+        Prompts the player if they would like to play again or quit the game.
+        """
+        TryAgain_choice = str(input("Would you like to play again? Y|N \n")).upper()
+        
+        if TryAgain_choice == 'Y':
+            print("\nYou've chosen to play again. Good Luck!")
+            HangmanUI(self.hangman) #Subject to change in final implementation
+        elif TryAgain_choice == 'N':
+            Quit_Choice = str(input("Would you like to quit? Y|N \n")).upper()
+            
+            if Quit_Choice == "Y":
+                print("\nYou've chosen to quit the game. Thank you for Playing!")
+                raise SystemExit
+            elif Quit_Choice == "N":
+                print("")
+                self.display_end_game_message()
+            else:
+                print("Invalid Input.")
+                self.display_end_game_message()
+        else:
+            print("Invalid Input.")
+            self.display_end_game_message()
