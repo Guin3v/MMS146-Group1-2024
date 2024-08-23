@@ -116,11 +116,11 @@ class HangmanUI:
                )
                
     def display_word_status(self):
-           '''
-           Display the word, revealing the letter each time the player makes a correct guess
-           '''
-           word_status = self.hangman.update_hangman()
-           print(f"\nWord: {word_status}")
+        '''
+        Display the word, revealing the letter each time the player makes a correct guess
+        '''
+        word_status = ''.join([letter if letter in self.hangman._guessed_letters else '_' for letter in self.hangman._secret_word])
+        print(f"\nWord: {word_status}")
     
     def display_end_game_message(self):
-           pass
+        pass
