@@ -4,7 +4,8 @@ class HangmanUI:
     
     def __init__(self, hangman_game: object):
         self.hangman = hangman_game
-    
+        self.hall_of_fame = {}
+        
     def display_hangman(self):
         '''
         Checks the self.__incorrect_guesses list within the HangmanGame class for the number of wrong letters 
@@ -150,3 +151,44 @@ class HangmanUI:
         else:
             print("Invalid Input.")
             self.display_end_game_message()
+            
+    def display_hall_of_fame(self):
+        '''
+        Opens the leaderboard text file (leaderboard.txt) 
+        and converts each line into an item in a list
+        '''
+        r = open('leaderboard.txt', 'r')
+        lb_list = r.readlines()
+        
+        '''
+        Converts the the list of items into a dictionary by
+        reading the list two items at a time. The first item
+        is then set as the Key, while the second item is set 
+        as the Value for the Dictionary pair. 
+        
+        This is repeated for all sets of two in the list, for
+        the entire list from the text file.
+        '''
+        for i in range(0, len(lb_list), 2):
+            self.hall_of_fame[lb_list[i]] = lb_list[i+1]
+            
+        '''
+        Sorts the dictionary by getting the Values and comparing
+        them through the sorted list function. It is reversed to
+        show the highest scores and then stored in a new list.
+        '''
+        list_hof = sorted(self.hall_of_fame.items(), key=lambda x:x[1], reverse=True)
+        
+        '''
+        Once sorted, the first 5 Pairs are then converted back
+        into the final hall of fame dictionary.
+        '''
+        sorted_hof = dict(list_hof[0:5])
+        
+        '''
+        Displays the dictionary/the Top 5 Players recorded
+        '''
+        print("HALL OF FAME - Top 5 Players")
+        print("-----------------------------")
+        for key, value in sorted_hof.items():
+            print(f'{list(sorted_hof).index(key) + 1}. {key} - Score: {value} Words')
