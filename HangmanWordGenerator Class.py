@@ -22,7 +22,7 @@ class HangmanWordGenerator:
             }
     
 
-    def get_secret_word (self, category): 
+    def get_random_word (self, category): 
       if category in self.categories: 
         word = random.choice(self.categories[category])
         return word
