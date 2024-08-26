@@ -75,6 +75,9 @@ class HangmanGame:
                 print("Invalid username. Please enter a valid username (letters and numbers only).")
 
     def add_player_score(self):
+        '''
+        Opens leaderboard text file (leaderboard.txt) and adds the username on one line, and the score on the next
+        '''
         l = open('leaderboard.txt', 'a')
         l.write(self.player_username + '\n')
         l.write(self._guessed_words + '\n')
