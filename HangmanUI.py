@@ -1,16 +1,15 @@
-from hangmangame import HangmanGame
-
 class HangmanUI:
     
     def __init__(self, hangman_game: object):
-        self.hangman = hangman_game
+        self.hangman_game = hangman_game
+        self.try_again_status = 0
         self.hall_of_fame = {}
-        
+    
     def display_hangman(self):
         '''
         Checks the self.__incorrect_guesses list within the HangmanGame class for the number of wrong letters 
         '''
-        guesses = len(self.hangman._incorrect_guesses)
+        guesses = self.hangman_game._hangman_status
         'Displays the appropriate state of the Hangman'
         if guesses == 0:
                 print(
@@ -124,8 +123,8 @@ class HangmanUI:
         '''
         Display the word, revealing the letter each time the player makes a correct guess
         '''
-        word_status = ''.join([letter if letter in self.hangman._guessed_letters else '_' for letter in self.hangman._secret_word])
-        print(f"\nWord: {word_status}")
+        word_status = ''.join([letter if letter in self.hangman_game._guessed_letters else '_' for letter in self.hangman_game._secret_word])
+        print(f"Word: {word_status}")
     
     def display_end_game_message(self):
         """
@@ -135,12 +134,12 @@ class HangmanUI:
         
         if TryAgain_choice == 'Y':
             print("\nYou've chosen to play again. Good Luck!")
-            HangmanUI(self.hangman) #Subject to change in final implementation
+            self.try_again_status = 1
+            return self.try_again_status
         elif TryAgain_choice == 'N':
-            Quit_Choice = str(input("Would you like to quit? Y|N \n")).upper()
-            
+            Quit_Choice = str(input("\nWould you like to quit? Y|N \n")).upper()
             if Quit_Choice == "Y":
-                print("\nYou've chosen to quit the game. Thank you for Playing!")
+                print("\nYou've chosen to quit the game. Thank you for Playing!\n")
                 raise SystemExit
             elif Quit_Choice == "N":
                 print("")
@@ -151,14 +150,16 @@ class HangmanUI:
         else:
             print("Invalid Input.")
             self.display_end_game_message()
-            
+    
     def display_hall_of_fame(self):
         '''
         Opens the leaderboard text file (leaderboard.txt) 
         and converts each line into an item in a list
         '''
         r = open('leaderboard.txt', 'r')
-        lb_list = r.readlines()
+        
+        lb_file = r.readlines()
+        lb_list = [line.strip() for line in lb_file]
         
         '''
         Converts the the list of items into a dictionary by
@@ -188,7 +189,7 @@ class HangmanUI:
         '''
         Displays the dictionary/the Top 5 Players recorded
         '''
-        print("HALL OF FAME - Top 5 Players")
+        print("\nHALL OF FAME - Top 5 Players")
         print("-----------------------------")
         for key, value in sorted_hof.items():
             print(f'{list(sorted_hof).index(key) + 1}. {key} - Score: {value} Words')
