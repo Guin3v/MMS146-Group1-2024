@@ -17,7 +17,7 @@ class HangmanWordGenerator:
                               'Crayons', 'Watercolor', 'Pencil', 'Ballpen', 'Notebook'],  
 
           'Food': ['Yogurt', 'Tomato', 'Bagel', 'Chocolate', 'Potato', 'Croissant',
-                   'Asparagus', 'Barbecue', 'Dragonfruit', 'Jalapeno'] 
+                   'Asparagus', 'Barbecue', 'Dragonfruit', 'Jalapeno'], 
 
           'Body Organ': ['Skin', 'Heart', 'Brain', 'Intestine', 'Liver',
                         'Kidney', 'Stomach', 'Lungs', 'Bladder', 'Pancreas'],
@@ -31,7 +31,7 @@ class HangmanWordGenerator:
     def get_random_word (self, category): 
       if category in self.categories: 
         word = random.choice(self.categories[category])
-        return word
+        return word.lower()
 
       else:
         raise ValueError ("Category not found")
