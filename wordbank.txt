@@ -1,7 +1,7 @@
-Music Genres: rock, jazz, pop, classical, blues, alternative rock, metal, funk, country, hip hop
-Cities: paris, london, new york, tokyo, seoul, dubai, manila, jakarta, kuala lumpur, rome
-Animals: giraffe, duck, penguin, parrot, monkey, turtle, jaguar, mantis, shark, spider
-School Supplies: paper, highlighter, marker, eraser, glue, crayons, watercolor, pencil, ballpen, notebook
-Food: yogurt, tomato, bagel, chocolate, potato, croissant, asparagus, barbecue, dragonfruit, jalapeno
-Body Organ: skin, heart, brain, intestine, liver, kidney, stomach, lungs, bladder, pancreas
-Color: blue, white, red, orange, brown, turquoise, green, fuschia, violet, black
+Music Genres:rock,jazz,pop,classical,blues,indie,metal,funk,country,christian
+Cities:paris,london,mexico,tokyo,seoul,dubai,manila,jakarta,shanghai,rome
+Animals:giraffe,duck,penguin,parrot,monkey,turtle,jaguar,mantis,shark,spider
+School Supplies:paper,highlighter,marker,eraser,glue,crayons,watercolor,pencil,ballpen,notebook
+Food:yogurt,tomato,bagel,chocolate,potato,croissant,asparagus,barbecue,dragonfruit,jalapeno
+Body Organ:skin,heart,brain,intestine,liver,kidney,stomach,lungs,bladder,pancreas
+Color:blue,white,red,orange,brown,turquoise,green,fuschia,violet,black
