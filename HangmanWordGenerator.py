@@ -1,37 +1,28 @@
-import random 
+import random
 
 class HangmanWordGenerator:
-  def __init__ (self):
-    self.categories = {
-          'Music Genres': [ 'Rock', 'Jazz', 'Pop', 'Classical', 'Blues',
-                        'Alternative Rock', 'Metal', 'Funk', 'Country', 'Hip Hop'],
+    def __init__(self, wordbank_file='wordbank.txt'):
+        self.wordbank_file = wordbank_file
+        self.word_bank = self.load_word_bank()  # Fixed the typo here
 
-          'Cities' : ['Paris', 'London', 'New York', 'Tokyo', 'Seoul', 'Dubai',
-                      'Manila', 'Jakarta', 'Kuala Lumpur', 'Rome'],
-           
-        
-          'Animals' : ['Giraffe', 'Duck', 'Penguin', 'Parrot', 'Monkey',
-                       'Turtle', 'Jaguar', 'Mantis', 'Shark', 'Spider'],
+    def load_word_bank(self):
+        '''Load the word bank from the text file and return a dictionary of categories and words'''
+        word_bank = {}
+        try:
+            with open(self.wordbank_file, 'r') as file:
+                for line in file:
+                    category, word = line.strip().split(':')
+                    word_bank[category.strip()] = [word.strip() for word in word.split(',')]
+        except FileNotFoundError:
+            print("The wordbank.txt file was not found")
+        except Exception as e:
+            print(f"An error occurred while loading the word bank: {e}")
+        return word_bank
 
-          'School Supplies': ['Paper', 'Highlighter', 'Marker', 'Eraser', 'Glue'
-                              'Crayons', 'Watercolor', 'Pencil', 'Ballpen', 'Notebook'],  
+    def get_random_word(self, category):
+        '''Get a random word from the specified category'''
+        if category in self.word_bank:
+            return random.choice(self.word_bank[category])
+        else:
+            raise ValueError(f"Category '{category}' not found in the word bank.")
 
-          'Food': ['Yogurt', 'Tomato', 'Bagel', 'Chocolate', 'Potato', 'Croissant',
-                   'Asparagus', 'Barbecue', 'Dragonfruit', 'Jalapeno'], 
-
-          'Body Organ': ['Skin', 'Heart', 'Brain', 'Intestine', 'Liver',
-                        'Kidney', 'Stomach', 'Lungs', 'Bladder', 'Pancreas'],
-    
-          'Color': ['Blue', 'White', 'Red', 'Orange', 'Brown',
-                   'Turquoise', 'Green', 'Fuschia', 'Violet', 'Black']
-  
-            }
-    
-
-  def get_random_word (self, category): 
-      if category in self.categories: 
-        word = random.choice(self.categories[category])
-        return word.lower()
-
-      else:
-        raise ValueError ("Category not found")
