@@ -1,4 +1,4 @@
-Music Genres: Rock, Jazz, Pop, Classical, Blues, Alternative Rock, Metal, Funk, Country, Hip Hop
+Music Genres: rock, jazz, pop, classical, blues, alternative rock, metal, funk, country, hip hop
 Cities: paris, london, new york, tokyo, seoul, dubai, manila, jakarta, kuala lumpur, rome
 Animals: giraffe, duck, penguin, parrot, monkey, turtle, jaguar, mantis, shark, spider
 School Supplies: paper, highlighter, marker, eraser, glue, crayons, watercolor, pencil, ballpen, notebook
