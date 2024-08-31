@@ -46,6 +46,7 @@ def main():
             continue  # Keep playing until attempts are exhausted
         elif hangman_game._win_status == 1:  # Player failed to guess the word
             print("Game Over!")
+            hangman_ui.display_hangman()
             hangman_game.input_username()
             hangman_game.record_score()
             hangman_game.display_hall_of_fame()
@@ -56,6 +57,7 @@ def main():
                 hangman_game.reset_game()  # Reset the game state for a new round
                 continue  # Start a new round
             else:
+                print("\nYou've chosen to quit the game. Thank you for Playing!\n")
                 break  # Exit the main loop
 
 if __name__ == "__main__":
